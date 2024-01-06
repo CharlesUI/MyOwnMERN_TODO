@@ -1,0 +1,33 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+*,*::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(65vw, 400px);
+}
+
+.todo-item {
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
