@@ -14,6 +14,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,95,180,1) 67%, rgba(0,212,255,1) 100%); 
 }
 
 .todo-container {
@@ -21,7 +23,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: min(65vw, 400px);
+  width: clamp(300px, 80vw, 420px);
+  background-color:antiquewhite;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .todo-item {
@@ -30,4 +35,64 @@ body {
   display: flex;
   gap: 5px;
   justify-content: center;
+}
+
+.title {
+  font-size: clamp(1.75rem, 2vw, 2.75rem);
+  margin-bottom: 7.5px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.todo-form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 6.5px;
+}
+
+textarea {
+  resize: none; /* Disable browser default resize handle */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  min-height: 20px; /* Set a minimum height */
+  max-height: 30px; /* Set a maximum height if needed */
+  height: auto;
+  padding: 5px 10px;
+  flex-grow: 5;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+.todo-form > button {
+  outline: none;
+  border: 1px solid transparent;
+  font-size: 1.125rem;
+  padding: 5px;
+  max-height: 30px;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: 1px solid transparent;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  padding: 5px;
+}
+button:hover {
+  background-color: white;
 }

@@ -4,6 +4,10 @@ import deleteTodo from "../api/deleteTodo";
 import { useMutation, useQueryClient } from "react-query";
 import debounce from "lodash.debounce";
 
+//FONTAWESOME
+import { RxUpdate } from "react-icons/rx";
+import { MdSystemUpdateAlt, MdDeleteForever } from "react-icons/md";
+
 export default function ToDoItems({ todo }) {
 
   const queryClient = useQueryClient();
@@ -27,7 +31,9 @@ export default function ToDoItems({ todo }) {
       console.log('delete')
       deleteTodo(updatedTodo)
     },
-    onSuccess: () => queryClient.invalidateQueries(['todos'])
+    onSuccess: () => {
+      queryClient.invalidateQueries(["todos"])
+    },
   })
 
   //debounce method to make sure that controlled inputs does not lag
@@ -39,6 +45,11 @@ export default function ToDoItems({ todo }) {
   const toggleButtonUpdate = () => {
     setIsDisabled(prevData => !prevData)
     debounceUpdateTodo(newTodo)
+  }
+
+  const toggleDeleteUpdate = () => {
+    toggleDelete(newTodo)
+    updateToDo(newTodo)
   }
 
   return (
@@ -56,11 +67,12 @@ export default function ToDoItems({ todo }) {
           setNewTodo(updatedTodo);
         }}
       />
-      <input
-        type="text"
+      <textarea
+        className={newTodo.completed ? 'strike-through' : '' }
         name="text"
         disabled={isDisabled}
         value={newTodo.text}
+        spellCheck={false}
         onChange={(e) => {
           const updatedTodo = {
             ...newTodo,
@@ -69,8 +81,8 @@ export default function ToDoItems({ todo }) {
           setNewTodo(updatedTodo);
         }}
       />
-      <button onClick={toggleButtonUpdate}>{isDisabled ? 'Update' : 'Finish'}</button>
-      <button onClick={() => toggleDelete(newTodo)}>Delete</button>
+      <button className="updt-btn btn" onClick={toggleButtonUpdate}>{isDisabled ? < RxUpdate /> : <MdSystemUpdateAlt />}</button>
+      <button className="dlt-btn btn" onClick={toggleDeleteUpdate}><MdDeleteForever /></button>
     </div>
   );
 }

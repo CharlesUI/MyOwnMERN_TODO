@@ -4,6 +4,7 @@ const todoRouter = require('../routes/todo')
 const connectDB = require('../db/connect')
 const dotenv = require('dotenv')
 const cors = require('cors')
+const path = require('path')
 dotenv.config()
 
 //error handlers
@@ -12,6 +13,8 @@ const notFound = require('../errors/notFound')
 const errorMiddleware = require('../errors/errorMiddleware')
 
 const port = process.env.PORT || 5000
+
+// Serve static files from the 'dist' directory
 
 //middlewares
 app.use(express.json())

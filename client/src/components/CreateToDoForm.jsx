@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import createTodo from "../api/createTodo";
+import { IoIosCreate } from "react-icons/io";
 
 export default function CreateToDoForm() {
   const [todo, setTodo] = useState({
@@ -24,13 +25,14 @@ export default function CreateToDoForm() {
 
   return (
     <form onSubmit={createData} className="todo-form">
-      <input
-        type="text"
+      <textarea
         name="text"
         value={todo.text}
         onChange={(e) => setTodo({ text: e.target.value })}
+        spellCheck={false}
+        placeholder="Input your to do here..."
       />
-      <button>Create</button>
+      <button><IoIosCreate /></button>
     </form>
   );
 }
